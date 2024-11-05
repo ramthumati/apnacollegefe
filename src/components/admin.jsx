@@ -1,9 +1,13 @@
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import configJson from "./config.json";
 
-export default function Admin(props) {
+export default function Admin() {
+    const [ isAdmin, setIsAdmin ] = useState(false);
     const checkIsAdmin = () => {
-        const userId = props.userId;
+        const userId = localStorage["UserId"];
+        if (userId == "") {
+            return;
+        }
         const apiUrl = configJson.apiBaseUrl + 'user/' + userId;
         fetch(apiUrl)
             .then((response) => {
@@ -15,8 +19,12 @@ export default function Admin(props) {
                 }
             })
             .then((userObject) => {
-                if (userObject.Role != "Admin") {
+                if (userObject.role != "Admin") {
+                    setIsAdmin(false);
                     document.getElementById("h3Message").innerHTML = "You are not an admin. Only admins are allowed in this admin section!.....";
+                }
+                else {
+                    setIsAdmin(true);
                 }
             })
             .catch((error) => {
@@ -31,7 +39,9 @@ export default function Admin(props) {
 
     return(
         <>
-            <h3 id="h3Message" align="center"></h3>
+            <h3 id="h3Message" align="center">Welcome to the Admin section</h3>
+            <h3>{isAdmin && <button>Create Users</button>}</h3>
+            <h3>{isAdmin && <button>Create DSA Master</button>}</h3>
         </>
     )
 }
