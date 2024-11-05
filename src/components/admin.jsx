@@ -1,8 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import configJson from "./config.json";
+import Help from "./help";
+import Login from "./login";
 
 export default function Admin() {
     const [ isAdmin, setIsAdmin ] = useState(false);
+    const [ createUsersToDisplay, setCreateUsersToDisplay ] = useState(false);
+    const [ createDSAMasterToDisplay, setCreateDSAMasterToDisplay ] = useState(false);
+
     const checkIsAdmin = () => {
         const userId = localStorage["UserId"];
         if (userId == "") {
@@ -33,6 +38,16 @@ export default function Admin() {
             })
     }
 
+    const renderCreateUsers = () => {
+        setCreateUsersToDisplay(true);
+        setCreateDSAMasterToDisplay(false);
+    }
+
+    const renderDSAMaster = () => {
+        setCreateUsersToDisplay(false);
+        setCreateDSAMasterToDisplay(true);
+    }
+
     useEffect(() => {
         checkIsAdmin();
     }, []);
@@ -40,8 +55,9 @@ export default function Admin() {
     return(
         <>
             <h3 id="h3Message" align="center">Welcome to the Admin section</h3>
-            <h3>{isAdmin && <button>Create Users</button>}</h3>
-            <h3>{isAdmin && <button>Create DSA Master</button>}</h3>
+            <h3>{isAdmin && <button onClick={renderCreateUsers}>Create Users</button>}&nbsp;&nbsp;&nbsp;
+            {isAdmin && <button onClick={renderDSAMaster}>Create DSA Master</button>}</h3>
+            <div id="divAdmin">{createUsersToDisplay && <Help />} {createDSAMasterToDisplay && <Login />}</div>
         </>
     )
 }
