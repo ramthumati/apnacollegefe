@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import configJson from "./config.json";
 import Help from "./help";
 import Login from "./login";
+import CreateUser from "./createUser";
 
 export default function Admin() {
     const [ isAdmin, setIsAdmin ] = useState(false);
@@ -57,7 +58,7 @@ export default function Admin() {
             <h3 id="h3Message" align="center">Welcome to the Admin section</h3>
             <h3>{isAdmin && <button onClick={renderCreateUsers}>Create Users</button>}&nbsp;&nbsp;&nbsp;
             {isAdmin && <button onClick={renderDSAMaster}>Create DSA Master</button>}</h3>
-            <div id="divAdmin">{createUsersToDisplay && <Help />} {createDSAMasterToDisplay && <Login />}</div>
+            <div id="divAdmin">{createUsersToDisplay && <CreateUser />} {createDSAMasterToDisplay && <Login />}</div>
         </>
     )
 }
