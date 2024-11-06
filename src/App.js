@@ -45,7 +45,7 @@ function App() {
               <Route path="dsasheet/index.html" Component={loggedIn ? () => <Help /> : () => <Login setThisUserId={setTheUserId} />} />
               <Route path="dsasheet/help" Component={loggedIn ? () => <Help /> : () => <Login setThisUserId={setTheUserId} />} />
               <Route path="dsasheet/admin" Component={loggedIn ? () => <Admin userId={userId} /> : () => <Login setThisUserId={setTheUserId} />} />
-              <Route path="dsasheet/dsa" Component={loggedIn ? () => <DsaSheet /> : () => <Login setThisUserId={setTheUserId} />} />
+              <Route path="dsasheet/dsa" Component={loggedIn ? () => <DsaSheet  userId={userId}/> : () => <Login setThisUserId={setTheUserId} />} />
               <Route path="dsasheet/logout" Component={loggedIn ? () => <Logout LogoutNow={LogoutNow} /> : () => <Login setThisUserId={setTheUserId}/>} />
               {/* <Route path="dsasheet/logout" Component={<Logout LogoutNow={LogoutNow} />} /> */}
           </Routes>

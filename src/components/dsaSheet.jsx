@@ -26,8 +26,15 @@ export default function DsaSheet(props) {
     }, []);
     return (
         <>
-            <h2 align="center">DSA Sheet</h2>
             <table width="80%" align="center">
+                <tr>
+                    <td align="center">
+                        <h2 align="center">DSA Sheet</h2>
+                        <input type="radio" name="radioStatus" /> All&nbsp;
+                        <input type="radio" name="radioStatus" /> Completed&nbsp;
+                        <input type="radio" name="radioStatus" /> Pending&nbsp;
+                    </td>
+                </tr>
                 {problems.map((oneProblem, problemIndex) => {
                     return(
                         <tr>
@@ -39,21 +46,26 @@ export default function DsaSheet(props) {
                                     <table>
                                         <tr>
                                             <td width="20%" align="right"><b>Topic Name:</b></td>
-                                            <td width="30%" align="left">{oneProblem.topicName}</td>
+                                            <td width="25%" align="left">{oneProblem.topicName}</td>
                                             <td width="20%" align="right"><b>Problem Name:</b></td>
-                                            <td width="30%" align="left">{oneProblem.problemName}</td>
+                                            <td width="25%" align="left">{oneProblem.problemName}</td>
+                                            <td width="10%" align="right">&nbsp;</td>
                                         </tr>
                                         <tr>
                                             <td width="20%" align="right"><b>YouTube Link:</b></td>
-                                            <td width="30%" align="left">{oneProblem.youTubeLink.toString().substr(0, 25)}</td>
+                                            <td width="25%" align="left">{oneProblem.youTubeLink.toString().substr(0, 25)}</td>
                                             <td width="20%" align="right"><b>Leetcode Link:</b></td>
-                                            <td width="30%" align="left">{oneProblem.leetCodeLink.toString().substr(0, 25)}</td>
+                                            <td width="25%" align="left">{oneProblem.leetCodeLink.toString().substr(0, 25)}</td>
+                                            <td width="10%" align="right">
+                                                <input type="checkbox" /> Completed
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td width="20%" align="right"><b>Article Link:</b></td>
-                                            <td width="30%" align="left">{oneProblem.articleLink.toString().substr(0, 25)}</td>
+                                            <td width="25%" align="left">{oneProblem.articleLink.toString().substr(0, 25)}</td>
                                             <td width="20%" align="right"><b>Level:</b></td>
-                                            <td width="30%" align="left">{oneProblem.level}</td>
+                                            <td width="25%" align="left">{oneProblem.level}</td>
+                                            <td width="10%" align="right">&nbsp;</td>
                                         </tr>
                                     </table>
                                 </td>
