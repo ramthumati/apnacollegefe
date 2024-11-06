@@ -38,21 +38,21 @@ export default function DsaSheet(props) {
                                 <td>
                                     <table>
                                         <tr>
-                                            <td width="20%" align="right">Topic Name:</td>
+                                            <td width="20%" align="right"><b>Topic Name:</b></td>
                                             <td width="30%" align="left">{oneProblem.topicName}</td>
-                                            <td width="20%" align="right">Problem Name:</td>
+                                            <td width="20%" align="right"><b>Problem Name:</b></td>
                                             <td width="30%" align="left">{oneProblem.problemName}</td>
                                         </tr>
                                         <tr>
-                                            <td width="20%" align="right">YouTube Link:</td>
+                                            <td width="20%" align="right"><b>YouTube Link:</b></td>
                                             <td width="30%" align="left">{oneProblem.youTubeLink.toString().substr(0, 25)}</td>
-                                            <td width="20%" align="right">Leetcode Link:</td>
+                                            <td width="20%" align="right"><b>Leetcode Link:</b></td>
                                             <td width="30%" align="left">{oneProblem.leetCodeLink.toString().substr(0, 25)}</td>
                                         </tr>
                                         <tr>
-                                            <td width="20%" align="right">Article Link:</td>
+                                            <td width="20%" align="right"><b>Article Link:</b></td>
                                             <td width="30%" align="left">{oneProblem.articleLink.toString().substr(0, 25)}</td>
-                                            <td width="20%" align="right">Level:</td>
+                                            <td width="20%" align="right"><b>Level:</b></td>
                                             <td width="30%" align="left">{oneProblem.level}</td>
                                         </tr>
                                     </table>

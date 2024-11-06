@@ -136,7 +136,7 @@ export default function CreateDsaProblem() {
                             </tr>
                             <tr>
                                 <td align="right">
-                                    <h4>Problem Name: </h4>
+                                    <h4><b>Problem Name:</b> </h4>
                                 </td>
                                 <td align="left">
                                     <input type="text" id="txtProblemName" size="15" />
@@ -144,7 +144,7 @@ export default function CreateDsaProblem() {
                             </tr>
                             <tr>
                                 <td align="right">
-                                    <h4>YouTube Link: </h4>
+                                    <h4><b>YouTube Link:</b> </h4>
                                 </td>
                                 <td align="left">
                                     <input type="text" id="txtYouTubeLink" size="15" />
@@ -152,7 +152,7 @@ export default function CreateDsaProblem() {
                             </tr>
                             <tr>
                                 <td align="right">
-                                    <h4>LeetCode Link: </h4>
+                                    <h4><b>LeetCode Link:</b> </h4>
                                 </td>
                                 <td align="left">
                                     <input type="text" id="txtLeetCodeLink" size="15" />
@@ -160,7 +160,7 @@ export default function CreateDsaProblem() {
                             </tr>
                             <tr>
                                 <td align="right">
-                                    <h4>Article Link: </h4>
+                                    <h4><b>Article Link:</b> </h4>
                                 </td>
                                 <td align="left">
                                     <input type="text" id="txtArticleLink" size="15" />
@@ -168,7 +168,7 @@ export default function CreateDsaProblem() {
                             </tr>
                             <tr>
                                 <td align="right">
-                                    <h4>Level: </h4>
+                                    <h4><b>Level:</b> </h4>
                                 </td>
                                 <td align="left">
                                     <input type="text" id="txtLevel" size="15" />
