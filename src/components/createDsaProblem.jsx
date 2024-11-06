@@ -112,7 +112,7 @@ export default function CreateDsaProblem() {
             <table width="80%" align="center">
                 <tr>
                     <td align="center">
-                        <h2>Add/Delete Dsa Topic Name</h2>
+                        <h2>Add/Delete Dsa Problem Name</h2>
                     </td>
                 </tr>
                 <tr>
