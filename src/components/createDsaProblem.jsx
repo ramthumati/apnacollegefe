@@ -4,10 +4,17 @@ const configJson = require("./config.json");
 
 export default function CreateDsaProblem() { 
     const [topics, setTopics] = useState([]);
+
     const addDsaProblem = () => {
         const topicName = document.getElementById("ddlTopics").options[document.getElementById("ddlTopics").selectedIndex].text;
         const problemName = document.getElementById("txtProblemName").value;
+        const youTubeLink = document.getElementById("txtYouTubeLink").value;
+        const leetCodeLink = document.getElementById("txtLeetCodeLink").value;
+        const articleLink = document.getElementById("txtArticleLink").value;
+        const level = document.getElementById("txtLevel").value;
+
         var apiUrl = configJson.apiBaseUrl + 'dsaProblem/' + topicName + '/' + problemName;
+
         fetch(apiUrl)
             .then((response) => {
                 if (response.status == 200) {
@@ -21,7 +28,11 @@ export default function CreateDsaProblem() {
                     headers: {'Content-Type':'application/json'},
                     body: JSON.stringify({
                         "topicName": topicName, 
-                        "problemName": problemName
+                        "problemName": problemName,
+                        "youTubeLink": youTubeLink, 
+                        "leetCodeLink": leetCodeLink, 
+                        "articleLink": articleLink, 
+                        "level": level
                     })
                 })
                     .then((response) => {
@@ -81,7 +92,7 @@ export default function CreateDsaProblem() {
                 .then((response) => {
                     if (response.status != 200) {
                         //document.getElementById("txtTopicName").focus();
-                        throw new Error("Dsa Topic Name not found. Cannot delete!.....");
+                        throw new Error("Dsa topics not found!.....");
                     }
                     else {
                         return response.json();
@@ -129,6 +140,38 @@ export default function CreateDsaProblem() {
                                 </td>
                                 <td align="left">
                                     <input type="text" id="txtProblemName" size="15" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    <h4>YouTube Link: </h4>
+                                </td>
+                                <td align="left">
+                                    <input type="text" id="txtYouTubeLink" size="15" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    <h4>LeetCode Link: </h4>
+                                </td>
+                                <td align="left">
+                                    <input type="text" id="txtLeetCodeLink" size="15" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    <h4>Article Link: </h4>
+                                </td>
+                                <td align="left">
+                                    <input type="text" id="txtArticleLink" size="15" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    <h4>Level: </h4>
+                                </td>
+                                <td align="left">
+                                    <input type="text" id="txtLevel" size="15" />
                                 </td>
                             </tr>
                             <tr>
