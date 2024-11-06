@@ -77,7 +77,9 @@ export default function DsaSheet(props) {
                     </td>
                 </tr>
                 {problems.map((oneProblem, problemIndex) => {
+                    var userId = localStorage["UserId"];
                     var checkBoxId = "checkCompleted_" + problemIndex;
+                    var thisIsChecked = oneProblem.users.toString().indexOf(userId) >= 0 ? true : false;
                     return(
                         <tr>
                     
@@ -99,7 +101,7 @@ export default function DsaSheet(props) {
                                             <td width="20%" align="right"><b>Leetcode Link:</b></td>
                                             <td width="25%" align="left">{oneProblem.leetCodeLink.toString().substr(0, 25)}</td>
                                             <td width="10%" align="right">
-                                                <input type="checkbox" id={checkBoxId} onClick={() => ThisProblemIsCompleted(oneProblem, problemIndex)} /> Completed
+                                                <input type="checkbox" id={checkBoxId} defaultChecked={thisIsChecked} onClick={() => ThisProblemIsCompleted(oneProblem, problemIndex)} /> Completed
                                             </td>
                                         </tr>
                                         <tr>
