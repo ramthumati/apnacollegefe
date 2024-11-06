@@ -3,6 +3,7 @@ import configJson from "./config.json";
 import Help from "./help";
 import Login from "./login";
 import CreateUser from "./createUser";
+import CreateDsaTopic from "./createDsaTopic";
 
 export default function Admin() {
     const [ isAdmin, setIsAdmin ] = useState(false);
@@ -56,9 +57,9 @@ export default function Admin() {
     return(
         <>
             <h3 id="h3Message" align="center">Welcome to the Admin section</h3>
-            <h3>{isAdmin && <button onClick={renderCreateUsers}>Create Users</button>}&nbsp;&nbsp;&nbsp;
-            {isAdmin && <button onClick={renderDSAMaster}>Create DSA Master</button>}</h3>
-            <div id="divAdmin">{createUsersToDisplay && <CreateUser />} {createDSAMasterToDisplay && <Login />}</div>
+            <h3>{isAdmin && <button onClick={renderCreateUsers}>Manage Users</button>}&nbsp;&nbsp;&nbsp;
+            {isAdmin && <button onClick={renderDSAMaster}>Manage DSA Topics</button>}</h3>
+            <div id="divAdmin">{createUsersToDisplay && <CreateUser />} {createDSAMasterToDisplay && <CreateDsaTopic />}</div>
         </>
     )
 }
