@@ -16,8 +16,34 @@ export default function DsaSheet(props) {
                 }
             })
             .then((response) => {
-                console.log(response);
+                //console.log(response);
                 setProblems(response);
+            })
+    }
+
+    const ThisProblemIsCompleted =(oneProblem, problemIndex) => {
+        const userId = document.getElementById("checkCompleted_" + problemIndex).checked ? localStorage["UserId"] : "";
+        var apiUrl = configJson.apiBaseUrl + 'dsaProblem';
+        fetch(apiUrl, {
+            method: "put",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+                "topicName": oneProblem.topicName, 
+                "problemName": oneProblem.problemName,
+                "youTubeLink": oneProblem.youTubeLink, 
+                "leetCodeLink": oneProblem.leetCodeLink, 
+                "articleLink": oneProblem.articleLink, 
+                "level": oneProblem.level,
+                "users": userId
+            })
+        })
+            .then((response) => {
+                if (response.status != 200) {
+                    throw new Error("Error while updating!.....");
+                }
+                else {
+                    return response.json();
+                }
             })
     }
 
@@ -36,6 +62,7 @@ export default function DsaSheet(props) {
                     </td>
                 </tr>
                 {problems.map((oneProblem, problemIndex) => {
+                    var checkBoxId = "checkCompleted_" + problemIndex;
                     return(
                         <tr>
                     
@@ -57,7 +84,7 @@ export default function DsaSheet(props) {
                                             <td width="20%" align="right"><b>Leetcode Link:</b></td>
                                             <td width="25%" align="left">{oneProblem.leetCodeLink.toString().substr(0, 25)}</td>
                                             <td width="10%" align="right">
-                                                <input type="checkbox" /> Completed
+                                                <input type="checkbox" id={checkBoxId} onClick={() => ThisProblemIsCompleted(oneProblem, problemIndex)} /> Completed
                                             </td>
                                         </tr>
                                         <tr>
