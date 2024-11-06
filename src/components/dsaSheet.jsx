@@ -16,7 +16,13 @@ export default function DsaSheet(props) {
                 }
             })
             .then((response) => {
-                //console.log(response);
+                var userId = localStorage["UserId"];
+                if (document.getElementById("radioStatusCompleted") && document.getElementById("radioStatusCompleted").checked) {
+                    response = response.filter((oneProblem) => oneProblem.users.toString().indexOf(userId) >= 0);
+                }
+                if (document.getElementById("radioStatusPending") && document.getElementById("radioStatusPending").checked) {
+                    response = response.filter((oneProblem) => oneProblem.users.toString().indexOf(userId) < 0);
+                }
                 setProblems(response);
             })
     }
@@ -47,18 +53,27 @@ export default function DsaSheet(props) {
             })
     }
 
+    const radioStatusIsClicked = () => {
+        // console.log(document.getElementById("radioStatusAll").checked);
+        // console.log(document.getElementById("radioStatusCompleted").checked);
+        // console.log(document.getElementById("radioStatusPending").checked);
+
+        fetchProblems();
+    }
+
     useEffect(() => {
         fetchProblems();
     }, []);
+
     return (
         <>
             <table width="80%" align="center">
                 <tr>
                     <td align="center">
                         <h2 align="center">DSA Sheet</h2>
-                        <input type="radio" name="radioStatus" /> All&nbsp;
-                        <input type="radio" name="radioStatus" /> Completed&nbsp;
-                        <input type="radio" name="radioStatus" /> Pending&nbsp;
+                        <input type="radio" id="radioStatusAll" name="radioStatus" onClick={radioStatusIsClicked} /> All&nbsp;
+                        <input type="radio" id="radioStatusCompleted" name="radioStatus" onClick={radioStatusIsClicked} /> Completed&nbsp;
+                        <input type="radio" id="radioStatusPending" name="radioStatus" onClick={radioStatusIsClicked} /> Pending&nbsp;
                     </td>
                 </tr>
                 {problems.map((oneProblem, problemIndex) => {
